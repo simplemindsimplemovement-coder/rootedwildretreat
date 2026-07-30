@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rooted Wild Reset</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pine:#1F2E23;
+    --pine-deep:#152019;
+    --parchment:#F1EADA;
+    --moss:#6E7C52;
+    --moss-dark:#4C5738;
+    --clay:#A65E2E;
+    --gold:#C9A227;
+    --line: rgba(241,234,218,0.18);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--parchment);
+    color:var(--pine-deep);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.6;
+  }
+  .wrap{max-width:760px;margin:0 auto;}
+
+  /* HERO */
+  .hero{
+    background:var(--pine);
+    color:var(--parchment);
+    padding:72px 32px 56px;
+    position:relative;
+    overflow:hidden;
+  }
+  .rings{
+    position:absolute;
+    top:50%; right:-90px; transform:translateY(-50%);
+    width:340px; height:340px;
+    opacity:0.5;
+  }
+  .rings circle{fill:none; stroke:var(--moss); }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:18px;
+    position:relative; z-index:2;
+  }
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:56px;
+    line-height:1.05;
+    max-width:520px;
+    position:relative; z-index:2;
+  }
+  .hero p{
+    margin-top:20px;
+    max-width:440px;
+    font-size:17px;
+    color:rgba(241,234,218,0.82);
+    position:relative; z-index:2;
+  }
+
+  /* SECTIONS */
+  section{padding:52px 32px;}
+  .intro{border-bottom:1px solid rgba(31,46,35,0.12);}
+  .intro p{max-width:560px; font-size:16px; color:var(--moss-dark);}
+
+  h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:28px;
+    margin-bottom:8px;
+    color:var(--pine-deep);
+  }
+  .section-sub{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--clay);
+    margin-bottom:28px;
+  }
+
+  /* PACKAGE CARDS */
+  .packages{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  .card{
+    background:#fff;
+    border:1px solid rgba(31,46,35,0.12);
+    border-radius:2px;
+    padding:28px 26px;
+    position:relative;
+  }
+  .card.featured{border:2px solid var(--moss);}
+  .badge{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    background:var(--moss);
+    color:var(--parchment);
+    padding:4px 10px;
+    margin-bottom:14px;
+  }
+  .card h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:20px;
+    margin-bottom:6px;
+  }
+  .card .desc{font-size:14px; color:var(--moss-dark); margin-bottom:18px;}
+  .price{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:34px;
+    color:var(--pine-deep);
+  }
+  .price span{font-size:14px; color:var(--moss-dark); font-family:'Work Sans', sans-serif;}
+  .includes{
+    margin-top:18px;
+    padding-top:16px;
+    border-top:1px solid rgba(31,46,35,0.1);
+    font-size:14px;
+    color:var(--moss-dark);
+  }
+  .includes li{list-style:none; padding-left:16px; position:relative; margin-bottom:6px;}
+  .includes li:before{
+    content:"·"; position:absolute; left:0; color:var(--clay); font-size:20px; line-height:0.8;
+  }
+  .note{
+    margin-top:24px;
+    font-size:13.5px;
+    color:var(--moss-dark);
+    font-style:italic;
+    max-width:560px;
+  }
+
+  /* ADD-ONS TABLE */
+  .addons{width:100%; border-collapse:collapse; font-size:14.5px;}
+  .addons tr{border-bottom:1px solid rgba(31,46,35,0.1);}
+  .addons td{padding:14px 4px;}
+  .addons td:first-child{color:var(--pine-deep); font-weight:500;}
+  .addons td:last-child{
+    text-align:right;
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--clay);
+  }
+
+  /* CUSTOM CLASSES */
+  .modules{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .module{
+    border-left:2px solid var(--moss);
+    padding:4px 0 4px 16px;
+  }
+  .module strong{display:block; font-size:15px; margin-bottom:2px; color:var(--pine-deep);}
+  .module span{font-size:13.5px; color:var(--moss-dark);}
+
+  /* CTA */
+  .cta{
+    background:var(--pine-deep);
+    color:var(--parchment);
+    text-align:center;
+    padding:56px 32px;
+  }
+  .cta h2{color:var(--parchment);}
+  .cta p{color:rgba(241,234,218,0.78); max-width:440px; margin:0 auto 24px;}
+  .btn{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    background:var(--gold);
+    color:var(--pine-deep);
+    padding:14px 30px;
+    text-decoration:none;
+    border-radius:2px;
+  }
+
+  footer{
+    text-align:center;
+    padding:20px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.06em;
+    color:var(--moss-dark);
+    background:var(--parchment);
+  }
+
+  @media (max-width:600px){
+    h1{font-size:38px;}
+    .packages, .modules{grid-template-columns:1fr;}
+    .rings{width:220px; height:220px; right:-70px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="hero">
+    <svg class="rings" viewBox="0 0 340 340">
+      <circle cx="170" cy="170" r="30" stroke-width="1.5"/>
+      <circle cx="170" cy="170" r="60" stroke-width="1.5"/>
+      <circle cx="170" cy="170" r="92" stroke-width="1.5"/>
+      <circle cx="170" cy="170" r="126" stroke-width="1.5"/>
+      <circle cx="170" cy="170" r="162" stroke-width="1.5"/>
+    </svg>
+    <div class="eyebrow">Cabin workshop &mdash; meditation &amp; taiji rooting qigong</div>
+    <h1>Rooted Wild Reset</h1>
+    <p>Root yourself somewhere real. This cabin bootcamp is built on stillness, rooting, and breath &mdash; taught outdoors, under the trees, whenever the sky allows it. Just a 2-minute walk to the National Forest, where you'll train and reset the mind and body.</p>
+  </div>
+
+  <section class="intro">
+    <p>Each session pairs seated meditation with taiji rooting qigong foundation work &mdash; the practice of sinking weight, finding your center, and moving from ground up. We train outside as much as the weather lets us: forest floor instead of studio floor, wind instead of white noise.</p>
+  </section>
+
+  <section>
+    <h2>Packages</h2>
+    <div class="section-sub">Choose your path</div>
+    <div class="packages">
+      <div class="card featured">
+        <span class="badge">Recommended</span>
+        <h3>Overnight immersion</h3>
+        <div class="desc">One night at the cabin plus the full 4-hour bootcamp.</div>
+        <div class="price">$750 <span>/ person</span></div>
+        <ul class="includes">
+          <li>1 night cabin stay</li>
+          <li>4-hr meditation &amp; rooting qigong training</li>
+          <li>Time to settle in before or after training</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Day bootcamp</h3>
+        <div class="desc">The full 4-hour training, no overnight stay.</div>
+        <div class="price">$550 <span>/ person</span></div>
+        <ul class="includes">
+          <li>4-hr meditation &amp; rooting qigong training</li>
+          <li>Outdoor training grounds</li>
+          <li>No lodging included</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">The overnight immersion includes your cabin stay and settling-in time &mdash; a fuller experience for those who want to stay rooted in the space beyond the training itself.</p>
+  </section>
+
+  <section>
+    <h2>Make it yours</h2>
+    <div class="section-sub">Custom class modules</div>
+    <div class="modules">
+      <div class="module">
+        <strong>Extra night</strong>
+        <span>$200 / additional night &mdash; available only if you've booked the overnight immersion. No training included.</span>
+      </div>
+      <div class="module">
+        <strong>Private session, extra night</strong>
+        <span>$60 / hr per person &mdash; for guests staying an extra night</span>
+      </div>
+      <div class="module">
+        <strong>Private session, no extra night</strong>
+        <span>$100 / hr per person</span>
+      </div>
+      <div class="module">
+        <strong>Extended bootcamp</strong>
+        <span>6 hrs instead of 4 &mdash; $350 day-only / $450 with stay</span>
+      </div>
+      <div class="module">
+        <strong>Group rate</strong>
+        <span>2 people max &mdash; 10% off per person</span>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top:1px solid rgba(31,46,35,0.12);">
+    <h2>Your teacher</h2>
+    <div class="section-sub">Choying Huynh</div>
+    <p style="max-width:640px; font-size:15.5px; color:var(--moss-dark); margin-bottom:16px;">
+      Choying teaches an integrated system of Taiji Quan, Qigong, Wing Chun, and meditation &mdash; practices rooted in traditional Chinese internal arts and built around one idea: the body, breath, and mind aren't separate things to fix, they're one system to know.
+    </p>
+    <p style="max-width:640px; font-size:15.5px; color:var(--moss-dark); margin-bottom:16px;">
+      He trains under Next Level Taiji in Denver, who trained directly under Master Chen ZiQiang, the 20th-generation disciple of Chenjiagou Chen-style Tai Chi &mdash; including Lao Jia Yi Lu (Old Frame First Road), the foundational parent form of Chen-style practice. His Wing Chun training comes from the Ip Ching lineage in both St. Louis and Denver, with 15+ years of Wing Chun Kung Fu, developing both the internal and external sides of the art.
+    </p>
+    <p style="max-width:640px; font-size:15.5px; color:var(--moss-dark); margin-bottom:16px;">
+      Rather than teaching Taiji, meditation, Qigong, and Wing Chun as separate subjects, Choying built a single framework with three entry points &mdash; movement for those who need to move to think, stillness for those who need to stop and feel, and Qigong for those who need something tangible to believe. Out of that framework came <em>Awaken the Dragon Within</em>, his 13-posture standing Qigong system distilled to root a practitioner's foundation without vague instruction or guesswork.
+    </p>
+    <p style="max-width:640px; font-size:15.5px; color:var(--moss-dark);">
+      He's the founder of Simple Mind Simple Movement and of Integration Meditation, LLC (2017) &mdash; creator of the Navigating The Mind framework, a foundation for breaking free from programming &mdash; a Denver and Edwardsville-based meditation space built around a 4-week workshop progression &mdash; observing the mind, breaking patterns, reprogramming, and integration. Across both, the throughline is the same: direct experience over dogma, structure you can feel in your own body, and practice built to compound over a lifetime.
+    </p>
+  </section>
+
+  <section style="border-top:1px solid rgba(31,46,35,0.12);">
+    <h2>House rules &amp; boundaries</h2>
+    <div class="section-sub">Please read before booking</div>
+    <p style="max-width:600px; font-size:15px; color:var(--moss-dark); margin-bottom:18px;">
+      This is a private residence &mdash; not a commercial retreat center. You're a guest in someone's home, on someone's land, in someone's neighborhood. A few things we ask of everyone who stays or trains here:
+    </p>
+    <ul class="includes" style="max-width:600px;">
+      <li>Respect the cabin and property as you would a friend's home &mdash; leave it as you found it.</li>
+      <li>Quiet hours and noise levels are kept low out of respect for neighbors.</li>
+      <li>Stay within the marked training areas and trails; the surrounding land is private and/or shared with neighboring residents.</li>
+      <li>No smoking indoors, and any open flame or fire follows local guidelines.</li>
+      <li>Alcohol and substances are not part of this practice space.</li>
+      <li>No outside pets, please &mdash; we already have Bodhi, our blue heeler, keeping us company on the land.</li>
+      <li>Cancellations and property damage are handled case by case &mdash; reach out directly with any questions before booking.</li>
+      <li>Airfare and transportation are not included &mdash; you'll need to arrange your own way here.</li>
+      <li>It's a dirt road with easy access, but if you're coming in winter, a 4x4 or AWD vehicle is required.</li>
+    </ul>
+    <p style="max-width:600px; font-size:14px; color:var(--moss-dark); font-style:italic; margin-top:16px;">
+      These boundaries exist so this space can stay open, personal, and sustainable &mdash; thank you for honoring them.
+    </p>
+  </section>
+
+  <div class="cta">
+    <h2>Come find your roots</h2>
+    <p>Spaces are kept small by design. Reach out to build your own weekend and lock in a date.</p>
+    <a class="btn" href="#">Reserve your spot</a>
+  </div>
+
+  <footer>ROOTED WILD RESET &middot; MEDITATION &amp; TAIJI ROOTING QIGONG &middot; AT THE CABIN</footer>
+
+</div>
+</body>
+</html>
